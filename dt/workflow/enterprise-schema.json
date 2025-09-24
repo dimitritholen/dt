@@ -1,0 +1,376 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Enterprise Development Workflow Schema",
+  "description": "Standardized JSON schema for chainable Claude Code enterprise development commands",
+  "type": "object",
+  "properties": {
+    "meta": {
+      "type": "object",
+      "description": "Project metadata and tooling information",
+      "properties": {
+        "projectName": {"type": "string"},
+        "version": {"type": "string"},
+        "language": {"type": "string", "description": "Primary programming language"},
+        "framework": {"type": "string", "description": "Primary framework or runtime"},
+        "buildSystem": {"type": "string", "description": "Build tool (npm, maven, gradle, etc.)"},
+        "packageManager": {"type": "string", "description": "Package manager (npm, yarn, pip, etc.)"},
+        "testFramework": {"type": "string", "description": "Testing framework"},
+        "linter": {"type": "string", "description": "Linting tool configuration"},
+        "formatter": {"type": "string", "description": "Code formatter"},
+        "cicd": {"type": "string", "description": "CI/CD platform"},
+        "qualityGates": {
+          "type": "object",
+          "properties": {
+            "coverageThreshold": {"type": "number", "minimum": 0, "maximum": 100},
+            "allowFailingTests": {"type": "boolean", "default": false},
+            "allowLintErrors": {"type": "boolean", "default": false},
+            "performanceThreshold": {"type": "number"},
+            "securityScanRequired": {"type": "boolean", "default": true}
+          }
+        },
+        "conventions": {
+          "type": "object",
+          "description": "Project-specific coding conventions",
+          "properties": {
+            "naming": {"type": "string"},
+            "indentation": {"type": "string"},
+            "maxLineLength": {"type": "number"},
+            "commitMessageFormat": {"type": "string"}
+          }
+        }
+      },
+      "required": ["projectName", "language"]
+    },
+    "requirements": {
+      "type": "object",
+      "description": "Functional and non-functional requirements from PRD",
+      "properties": {
+        "functional": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {"type": "string"},
+              "title": {"type": "string"},
+              "description": {"type": "string"},
+              "priority": {"type": "string", "enum": ["critical", "high", "medium", "low"]},
+              "acceptanceCriteria": {"type": "array", "items": {"type": "string"}},
+              "dependencies": {"type": "array", "items": {"type": "string"}}
+            },
+            "required": ["id", "title", "description", "priority"]
+          }
+        },
+        "nonFunctional": {
+          "type": "object",
+          "properties": {
+            "performance": {
+              "type": "object",
+              "properties": {
+                "responseTime": {"type": "string"},
+                "throughput": {"type": "string"},
+                "concurrency": {"type": "number"}
+              }
+            },
+            "security": {
+              "type": "object",
+              "properties": {
+                "authentication": {"type": "string"},
+                "authorization": {"type": "string"},
+                "dataProtection": {"type": "string"},
+                "complianceRequirements": {"type": "array", "items": {"type": "string"}}
+              }
+            },
+            "scalability": {
+              "type": "object",
+              "properties": {
+                "expectedUsers": {"type": "number"},
+                "dataVolume": {"type": "string"},
+                "growthProjection": {"type": "string"}
+              }
+            },
+            "reliability": {
+              "type": "object",
+              "properties": {
+                "availability": {"type": "string"},
+                "errorRate": {"type": "number"},
+                "recovery": {"type": "string"}
+              }
+            }
+          }
+        },
+        "constraints": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {"type": "string"},
+              "description": {"type": "string"},
+              "impact": {"type": "string"}
+            }
+          }
+        }
+      }
+    },
+    "architecture": {
+      "type": "object",
+      "description": "System architecture and design decisions",
+      "properties": {
+        "pattern": {"type": "string", "description": "Primary architectural pattern"},
+        "layers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {"type": "string"},
+              "responsibility": {"type": "string"},
+              "technologies": {"type": "array", "items": {"type": "string"}}
+            }
+          }
+        },
+        "components": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {"type": "string"},
+              "type": {"type": "string"},
+              "purpose": {"type": "string"},
+              "interfaces": {"type": "array", "items": {"type": "string"}},
+              "dependencies": {"type": "array", "items": {"type": "string"}}
+            }
+          }
+        },
+        "dataFlow": {
+          "type": "object",
+          "properties": {
+            "inputs": {"type": "array", "items": {"type": "string"}},
+            "outputs": {"type": "array", "items": {"type": "string"}},
+            "processing": {"type": "array", "items": {"type": "string"}}
+          }
+        },
+        "decisions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {"type": "string"},
+              "title": {"type": "string"},
+              "context": {"type": "string"},
+              "decision": {"type": "string"},
+              "rationale": {"type": "string"},
+              "consequences": {"type": "array", "items": {"type": "string"}}
+            }
+          }
+        }
+      }
+    },
+    "implementation": {
+      "type": "object",
+      "description": "Implementation planning and code structure",
+      "properties": {
+        "structure": {
+          "type": "object",
+          "properties": {
+            "directories": {"type": "array", "items": {"type": "string"}},
+            "files": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "path": {"type": "string"},
+                  "purpose": {"type": "string"},
+                  "dependencies": {"type": "array", "items": {"type": "string"}}
+                }
+              }
+            }
+          }
+        },
+        "modules": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {"type": "string"},
+              "purpose": {"type": "string"},
+              "interfaces": {"type": "array", "items": {"type": "string"}},
+              "implementation": {
+                "type": "object",
+                "properties": {
+                  "classes": {"type": "array", "items": {"type": "string"}},
+                  "functions": {"type": "array", "items": {"type": "string"}},
+                  "apis": {"type": "array", "items": {"type": "string"}}
+                }
+              }
+            }
+          }
+        },
+        "dependencies": {
+          "type": "object",
+          "properties": {
+            "external": {"type": "array", "items": {"type": "string"}},
+            "internal": {"type": "array", "items": {"type": "string"}},
+            "devDependencies": {"type": "array", "items": {"type": "string"}}
+          }
+        },
+        "phases": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {"type": "string"},
+              "order": {"type": "number"},
+              "deliverables": {"type": "array", "items": {"type": "string"}},
+              "estimatedEffort": {"type": "string"}
+            }
+          }
+        }
+      }
+    },
+    "testing": {
+      "type": "object",
+      "description": "Comprehensive testing strategy and implementation",
+      "properties": {
+        "strategy": {
+          "type": "object",
+          "properties": {
+            "pyramid": {
+              "type": "object",
+              "properties": {
+                "unit": {"type": "number", "description": "Percentage of unit tests"},
+                "integration": {"type": "number", "description": "Percentage of integration tests"},
+                "e2e": {"type": "number", "description": "Percentage of E2E tests"}
+              }
+            },
+            "coverage": {
+              "type": "object",
+              "properties": {
+                "target": {"type": "number", "minimum": 85},
+                "minimum": {"type": "number", "minimum": 80},
+                "exclusions": {"type": "array", "items": {"type": "string"}}
+              }
+            }
+          }
+        },
+        "types": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {"type": "string", "enum": ["unit", "integration", "e2e", "smoke", "performance", "security", "accessibility"]},
+              "framework": {"type": "string"},
+              "scope": {"type": "string"},
+              "frequency": {"type": "string"},
+              "automation": {"type": "boolean"}
+            }
+          }
+        },
+        "scenarios": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {"type": "string"},
+              "name": {"type": "string"},
+              "type": {"type": "string"},
+              "description": {"type": "string"},
+              "preconditions": {"type": "array", "items": {"type": "string"}},
+              "steps": {"type": "array", "items": {"type": "string"}},
+              "expectedResults": {"type": "array", "items": {"type": "string"}},
+              "priority": {"type": "string"}
+            }
+          }
+        },
+        "performance": {
+          "type": "object",
+          "properties": {
+            "loadTesting": {"type": "object"},
+            "stressTesting": {"type": "object"},
+            "benchmarks": {"type": "array", "items": {"type": "string"}}
+          }
+        }
+      }
+    },
+    "quality": {
+      "type": "object",
+      "description": "Quality assurance metrics and standards",
+      "properties": {
+        "metrics": {
+          "type": "object",
+          "properties": {
+            "codeComplexity": {"type": "number"},
+            "technicalDebt": {"type": "string"},
+            "codeChurn": {"type": "number"},
+            "bugDensity": {"type": "number"},
+            "performanceScore": {"type": "number"}
+          }
+        },
+        "standards": {
+          "type": "object",
+          "properties": {
+            "codingStandards": {"type": "array", "items": {"type": "string"}},
+            "documentationRequirements": {"type": "array", "items": {"type": "string"}},
+            "reviewCriteria": {"type": "array", "items": {"type": "string"}}
+          }
+        },
+        "gates": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "stage": {"type": "string"},
+              "criteria": {"type": "array", "items": {"type": "string"}},
+              "blocking": {"type": "boolean"},
+              "automatable": {"type": "boolean"}
+            }
+          }
+        },
+        "security": {
+          "type": "object",
+          "properties": {
+            "staticAnalysis": {"type": "boolean"},
+            "dependencyScanning": {"type": "boolean"},
+            "codeScanning": {"type": "boolean"},
+            "vulnerabilityAssessment": {"type": "boolean"}
+          }
+        }
+      }
+    },
+    "delivery": {
+      "type": "object",
+      "description": "Pull request and deployment information",
+      "properties": {
+        "pr": {
+          "type": "object",
+          "properties": {
+            "title": {"type": "string"},
+            "description": {"type": "string"},
+            "type": {"type": "string", "enum": ["feature", "bugfix", "hotfix", "chore", "docs"]},
+            "scope": {"type": "string"},
+            "impact": {"type": "string"},
+            "reviewers": {"type": "array", "items": {"type": "string"}},
+            "labels": {"type": "array", "items": {"type": "string"}},
+            "linkedIssues": {"type": "array", "items": {"type": "string"}}
+          }
+        },
+        "deployment": {
+          "type": "object",
+          "properties": {
+            "environment": {"type": "string"},
+            "strategy": {"type": "string"},
+            "rollbackPlan": {"type": "string"},
+            "monitoring": {"type": "array", "items": {"type": "string"}}
+          }
+        },
+        "communication": {
+          "type": "object",
+          "properties": {
+            "stakeholders": {"type": "array", "items": {"type": "string"}},
+            "channels": {"type": "array", "items": {"type": "string"}},
+            "announcements": {"type": "array", "items": {"type": "string"}}
+          }
+        }
+      }
+    }
+  },
+  "required": ["meta"]
+}
