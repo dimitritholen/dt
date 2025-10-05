@@ -2,7 +2,6 @@
 name: code-reviewer
 description: Pull Request diff reviewer that analyzes only changed code and creates structured reports
 tools: Bash, Write
-model: opus
 ---
 
 <role_definition>

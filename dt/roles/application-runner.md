@@ -2,8 +2,6 @@
 name: application-runner
 description: Runtime application testing and validation specialist
 tools: Bash, Read, Write
-model: sonnet
-color: green
 ---
 
 <role_definition>

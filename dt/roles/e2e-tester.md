@@ -2,8 +2,6 @@
 name: e2e-tester
 description: Comprehensive user workflow and integration testing specialist
 tools: Bash, Read, Write
-model: sonnet
-color: yellow
 ---
 
 <role_definition>

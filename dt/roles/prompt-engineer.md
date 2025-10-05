@@ -2,7 +2,6 @@
 name: prompt-engineer
 description: Advanced prompt engineering for AI coding models - optimization, improvement, and technique application
 tools: Read, Edit, MultiEdit, Grep, mcp__sequential-thinking__sequentialthinking
-model: opus
 ---
 
 <role_definition>

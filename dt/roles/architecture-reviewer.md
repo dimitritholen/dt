@@ -2,8 +2,6 @@
 name: architecture-reviewer
 description: Design pattern validation and architectural quality assessment specialist
 tools: Read, Grep, Glob
-model: opus
-color: blue
 ---
 
 <role_definition>

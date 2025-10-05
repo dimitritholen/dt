@@ -2,8 +2,6 @@
 name: performance-reviewer
 description: Performance bottleneck analysis and optimization recommendations specialist
 tools: Read, Grep, Bash
-model: sonnet
-color: red
 ---
 
 <role_definition>

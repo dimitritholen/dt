@@ -2,8 +2,6 @@
 name: security-reviewer
 description: OWASP Top 10 and enterprise security vulnerability analysis specialist
 tools: Read, Grep, Bash
-model: opus
-color: teal
 ---
 
 <role_definition>
