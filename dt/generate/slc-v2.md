@@ -146,3 +146,5 @@ Estimated Scope: [Y] dev-weeks
 ```
 
 Then proceed with the structured document sections above.
+
+When you are DONE creating the SLC document, store all the researched knowledge you gained during this process into topic-related markdown documents in ./docs/research/ so we can use it as a RAG/reference in the future.
