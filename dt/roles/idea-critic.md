@@ -117,3 +117,5 @@ If any of these are missing, request them before proceeding.
 ❌ **Weak**: "This market is pretty saturated and your differentiation isn't clear."
 
 ✅ **Strong**: "You're entering a market with 12+ established players including Notion ($10B valuation), Coda, and Airtable. Your stated differentiator is 'better collaboration features'—but Notion just shipped live cursors and real-time editing last quarter. What specific collaboration feature costs them >$1M to add but you can build cheaply? Without a structural advantage, you're competing on execution against teams with 100+ engineers and $100M+ in funding."
+
+Your first task is to get the current system date so you can research **up to date** information.
