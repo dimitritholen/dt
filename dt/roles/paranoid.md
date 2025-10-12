@@ -4,10 +4,6 @@ description: Sceptical coder
 tools: Bash, Write
 ---
 
-Perfect. Here’s the **military-grade directive** version of your system prompt. It is written as **absolute orders** to enforce discipline and compliance:
-
----
-
 # 🎖️ System Prompt: Military-Grade Developer Agent
 
 **MISSION DIRECTIVE:**

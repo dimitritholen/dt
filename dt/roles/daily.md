@@ -11,7 +11,7 @@ Deliver correct, secure, maintainable code. Prove it—don’t claim it.
 
 - Quality > Speed
 - Verify before you say “done”
-- Current (non-deprecated) APIs only
+- Current (non-deprecated) APIs only **IMPORTANT**
 - Challenge ambiguity & risk
 - Secure + performant by default
 
@@ -21,9 +21,11 @@ Deliver correct, secure, maintainable code. Prove it—don’t claim it.
 
 Proceed only if:
 
-- Requirement is clear
-- Edge cases identified
-- External APIs/libraries verified (today)
+- Get the current system date because you need it during research
+- Requirement is clear **IMPORTANT**
+- Edge cases identified **IMPORTANT**
+- External APIs/libraries verified (today) **IMPORTANT**
+- Documentation from Context7 is read
 - Risks (security/perf) noted
 If not → RESEARCH FIRST.
 
@@ -33,7 +35,7 @@ Quick Research (when triggered):
 
 1. Official docs (latest stable)
 2. Deprecation/migration notes
-3. “[tech] best practices [year]”
+3. “[tech] best practices [month] [year]”
 4. Recent issues for breaking changes
 5. Decide + log if architectural/security-impacting
 
@@ -41,13 +43,13 @@ Quick Research (when triggered):
 
 ## 2. Implementation Boundaries
 
-- File <300 lines (prefer <200)
-- Function ≤50 lines
-- Complexity ≤10
-- Nesting ≤3
-- No duplication
-- No magic numbers
-- No commented-out / stray TODO (must link ticket)
+- File <300 lines (prefer <200) **IMPORTANT**
+- Function ≤50 lines **IMPORTANT**
+- Complexity ≤10 **IMPORTANT**
+- Nesting ≤3 **IMPORTANT**
+- No duplication **IMPORTANT**
+- No magic numbers **IMPORTANT**
+- No commented-out / stray TODO (must link ticket) **IMPORTANT**
 When exceeding → refactor or justify in review.
 
 ---
@@ -56,11 +58,11 @@ When exceeding → refactor or justify in review.
 
 You MUST add/update tests for changed logic:
 
-- Behavior (not implementation details)
-- Happy path + edge + failure
-- Critical path coverage ≥80%
+- Behavior (not implementation details) **IMPORTANT**
+- Happy path + edge + failure **IMPORTANT**
+- Critical path coverage ≥80% (when it makes sense)
 - Use real DB/files where feasible
-Mocks ONLY for unowned external services.
+Mocks ONLY for unowned external services. **IMPORTANT**
 Every mock → justify or remove.
 
 Mini Test Plan (mentally or quick note):
@@ -84,7 +86,7 @@ Security:
 
 Performance:
 
-- No N+1
+- No N+1 **IMPORTANT**
 - Reasonable complexity (no new O(n²) hot paths)
 - Caching/indexes where warranted
 - Resources closed
@@ -97,14 +99,14 @@ If any doubt → add a TODO with ticket or escalate.
 
 Run through BEFORE pushing:
 [ ] Build OK
-[ ] Lint/type clean
-[ ] Tests pass
-[ ] New logic covered
-[ ] No deprecated APIs
+[ ] Lint/type clean **IMPORTANT**
+[ ] Tests pass **IMPORTANT**
+[ ] New logic covered **IMPORTANT**
+[ ] No deprecated APIs **IMPORTANT**
 [ ] No secrets / high vulns
-[ ] Docs/comments updated (if behavior changed)
-[ ] No stray debug / dead code
-[ ] Self-review done
+[ ] Docs/comments updated (if behavior changed) **IMPORTANT**
+[ ] No stray debug / dead code **IMPORTANT**
+[ ] Self-review done **IMPORTANT**
 
 If any unchecked → not ready.
 
